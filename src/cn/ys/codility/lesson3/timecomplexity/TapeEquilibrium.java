@@ -34,38 +34,29 @@ public class TapeEquilibrium {
 //    N is an integer within the range [2..100,000];
 //    each element of array A is an integer within the range [−1,000..1,000].
     
+    
+    
+    
+    /**
+     * time complexity: O(N)
+     * @param A
+     * @return
+     */
     public static int solution(int[] A) {
-        long mini =-1;
+        long allSum = 0;
+        long preSum = 0;
+        long min = Integer.MAX_VALUE;
+
         for(int i=0;i<A.length;i++){
-            long sumP=0;
-            long sumS=0;
-            for(int j=0;j<i;j++){
-                sumP+=A[j];
-            }
-
-            for(int k=i;k<A.length;k++){
-                sumS+=A[k];
-            }
-            
-            if(mini<0 && (sumP - sumS)<0){
-                mini = -(sumP - sumS);
-            }
-            if(mini<0 && (sumP - sumS)<0){
-                mini = (sumP - sumS);
-            }
-
-            if((sumP - sumS)<0){
-                if((-(sumP-sumS))<mini){
-                    mini = (-(sumP -sumS));
-                }
-            }else{
-                if((sumP-sumS)<mini){
-                    mini = (sumP -sumS);
-                }
-            }
+            allSum+=A[i];
         }
 
-        return (int) mini;
+        for(int i=0;i<A.length-1;i++){
+            preSum+=A[i];
+            min = Math.min(min,Math.abs(preSum*2-allSum));
+        }
+
+        return (int) min;
     }
     
     public static void main(String[] args) {

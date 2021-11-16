@@ -26,9 +26,9 @@ public class CyclicRotation {
         int temp;
         while(K>=1){
             for(int i=A.length-1;i>0;i--){
-                temp=A[i];
-                A[i]=A[i-1];
-                A[i-1]=temp;
+                A[i] = A[i] + A[i-1];
+                A[i-1] = A[i] - A[i-1];
+                A[i] = A[i] - A[i-1];
             }
             K--;
         }

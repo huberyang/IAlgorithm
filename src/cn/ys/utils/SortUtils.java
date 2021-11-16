@@ -3,7 +3,11 @@ package cn.ys.utils;
 public class SortUtils {
     
     
-    //seldom used in actual situation 
+    /**
+     * 
+     * seldom used in actual situation 
+     * @param arr
+     */
     public static void bubbleSort(int[] arr) {
         for(int i=1;i<arr.length;i++) {
             boolean flag = true;
@@ -21,6 +25,10 @@ public class SortUtils {
         }
     }
     
+    /**
+     * 
+     * @param arr
+     */
     public static void insertSort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int tmp = arr[i];
