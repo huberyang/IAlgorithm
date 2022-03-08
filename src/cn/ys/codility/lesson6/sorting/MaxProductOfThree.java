@@ -2,7 +2,10 @@ package cn.ys.codility.lesson6.sorting;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import javax.lang.model.element.Element;
 
 public class MaxProductOfThree {
     
@@ -57,5 +60,42 @@ public class MaxProductOfThree {
 
         int max = Math.max(sum,sum2);
         return max;
+    }
+    
+    public static void main(String[] args) {
+        List tempList=new ArrayList();
+        tempList.add(new Integer(10));
+        tempList.add(new Integer(2));
+        tempList.add(new Integer(8));
+        tempList.add(new Integer(4));
+        tempList.add(new Integer(7));
+        tempList.add(new Integer(4));
+        tempList.add(new Integer(10000));
+        
+        Collections.sort(tempList);
+        
+        int index = Collections.binarySearch(tempList, 1000);
+        
+        //Collections.reverse(tempList);
+        
+        Collections.sort(tempList, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if(o1.intValue()<o2.intValue()) {
+                    return 1;
+                }
+                
+                if(o1.intValue()>o2.intValue()) {
+                    return -1;
+                }
+                return 0;
+            };
+        });
+    
+        tempList.stream().forEach(ele ->{
+            System.out.println(ele);
+        });
+        
+        System.out.println(index);
     }
 }
